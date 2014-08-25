@@ -1,0 +1,18 @@
+{
+    "author" : "Roberto Sales <robertosalesc@dcc.ufba.br>",
+    "name": "cbuffer-resizable",
+    "version": "0.0.1",
+    "description": "resizable circular buffer based on CBuffer package",
+    "keywords": ["circular buffer", "resizable", "CBuffer", "resize"],
+    "license": "MIT",
+    "main": "index.js",
+    "readmeFilename": "README.md",
+    "repository":{
+        "type": "git",
+        "url": "http://github.com/skywalkerd/CBuffer-resizable.git"
+    },
+    "dependencies":
+    {
+        "CBuffer": "~0.1.5"
+    }
+}
