@@ -54,16 +54,19 @@ CBufferR.prototype.push = function(){
         this.data[(this.end + i + 1) % this.length] = arguments[i];
     }
     // recalculate size
-    if (this.size < this.length) {
-        if (this.size + i > this.length) this.size = this.length;
-        else this.size += i;
-    }
+    this.size += i;
+
     // recalculate end
     this.end = (this.end + i) % this.length;
-    // recalculate start
-    this.start = (this.length + this.end - this.size + 1) % this.length;
+
     // return number current number of items in CBuffer
     return this.size;
+};
+
+CBufferR.prototype.swap  = function(a, b){
+    var tmp = this.data[a];
+    this.data[a] = this.data[b];
+    this.data[b] = tmp;
 };
 
 module.exports = CBufferR;
