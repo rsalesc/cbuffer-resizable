@@ -16,6 +16,7 @@ function CBufferR(){
         }
     }
     CBuffer.prototype.constructor.apply(this, Array.prototype.slice.call(arguments));
+    this._initialLength = this.length;
     this._resizeFactor = 2;  // default resize factor is 2
 };
 
@@ -61,6 +62,19 @@ CBufferR.prototype.push = function(){
 
     // return number current number of items in CBuffer
     return this.size;
+};
+
+CBufferR.prototype.pop = function(){
+    var popped = CBuffer.prototype.pop.call(this);
+
+    if(this.size << 1 > this._initialLength) {
+        // shrink array if too big
+        if (this.size < this.length / (this._resizeFactor * this._resizeFactor)) {
+            this.resize(this.size << 1);
+        }
+    }
+
+    return popped;
 };
 
 CBufferR.prototype.swap  = function(a, b){
